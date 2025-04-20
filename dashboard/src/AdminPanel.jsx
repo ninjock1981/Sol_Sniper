@@ -10,7 +10,8 @@ export default function AdminPanel() {
   const [walletFilter, setWalletFilter] = useState("");
 
   useEffect(() => {
-    const ws = new WebSocket("ws://localhost:8081?token=secret123");
+    const socket = new WebSocket(import.meta.env.VITE_WS_URL);
+	//const ws = new WebSocket("ws://localhost:8081?token=secret123");
     wsRef.current = ws;
     ws.onmessage = (e) => {
       const data = JSON.parse(e.data);
